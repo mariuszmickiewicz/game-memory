@@ -7,6 +7,7 @@
 }
 
 body {
+  display: flex;
   margin: 0;
   padding: 0;
   background-color: #111;
@@ -14,16 +15,24 @@ body {
 }
 
 #container {
+  margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#inner {
+  width: 50vw;
+  height: 50vw;
 }
 
 #board {
   display: block;
-  width: var(--boardWidth);
+  width: 100%;
+  height: 100%;
+  align-self: center;
 }
 
 .field {
@@ -31,18 +40,29 @@ body {
   float: left;
   margin: var(--fieldMargin);
   display: block;
-  width: var(--fieldSize);
-  height: var(--fieldSize);
+  width: calc(25% - (2 * var(--fieldMargin)));
+  height: calc(25% - (2 * var(--fieldMargin)));
 
   text-align: center;
-  line-height: var(--fieldSize);
+  line-height: calc(50vw / 4 - (2 * var(--fieldMargin)));
   transition: 0.1s all;
   background-color: #333;
 
-  font-size: 32px;
+  font-size: 5vw;
   text-transform: capitalize;
   color: transparent;
   z-index: 1;
+}
+
+.field:hover {
+  cursor: pointer;
+  background-color: #444;
+  transform: scale(0.98);
+  z-index: 10;
+}
+
+.field.uncovered:hover {
+  transform: scale(1);
 }
 
 .field.marked {
@@ -50,23 +70,18 @@ body {
   color: #ddd;
 }
 
-.field:hover {
-  cursor: pointer;
-  background-color: #fb5;
-  transform: scale(0.98);
-  z-index: 10;
-}
 .field.marked:hover {
   background-color: #f55;
   transform: scale(1);
 }
 
-
-.field.hidden {
-  background-color: transparent;
-  color: transparent;
-  display: hidden;
+.field.marked.uncovered:hover,
+.field.uncovered {
+  color: #fff;
+  background-color: #fb5;
+  transform: scale(1);
 }
+
 
 
 

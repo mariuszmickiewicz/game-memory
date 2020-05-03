@@ -112,8 +112,8 @@ function hideTilesExcept(tiles) {
 
 
 function markDiscovered() {
-  selectedTiles[0].classList.add('hidden');
-  selectedTiles[1].classList.add('hidden');
+  selectedTiles[0].classList.add('uncovered');
+  selectedTiles[1].classList.add('uncovered');
 }
 
 function nothing() {

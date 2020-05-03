@@ -52,7 +52,7 @@ body {
 
   background-color: #333;
   background-repeat: no-repeat;
-  background-size: 50%;
+  background-size: 45%;
   background-position: center;
   background-image: none;
   border-radius: var(--tileRadius);
@@ -61,7 +61,7 @@ body {
 
 .tile:hover { background-color: var(--tileBkgHover); cursor: pointer; }
 .tile.marked { background-color: var(--tileBkgMarked); }
-.tile.guessed { background-color: var(--tileBkgGuessed); }
+.tile.guessed { background-color: var(--tileBkgGuessed); background-size: 35%; }
 
 
 #score {

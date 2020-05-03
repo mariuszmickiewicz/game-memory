@@ -3,14 +3,14 @@
     <title>item square</title>
     <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-            <stop stop-color="#85C348" offset="0%"></stop>
-            <stop stop-color="#5E9A25" offset="100%"></stop>
+            <stop stop-color="#136CDC" offset="0%"></stop>
+            <stop stop-color="#1F27E2" offset="100%"></stop>
         </linearGradient>
         <path d="M52,2 C53.1045695,2 54,2.8954305 54,4 L54,52 C54,53.1045695 53.1045695,54 52,54 L4,54 C2.8954305,54 2,53.1045695 2,52 L2,4 C2,2.8954305 2.8954305,2 4,2 L52,2 Z M39,15 L17,15 C15.8954305,15 15,15.8954305 15,17 L15,17 L15,39 C15,40.1045695 15.8954305,41 17,41 L17,41 L39,41 C40.1045695,41 41,40.1045695 41,39 L41,39 L41,17 C41,15.8954305 40.1045695,15 39,15 L39,15 Z" id="path-2"></path>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-19.000000, -111.000000)">
-            <g id="item-square" transform="translate(17.000000, 109.000000)">
+        <g id="Artboard" transform="translate(-203.000000, -111.000000)">
+            <g id="item-square" transform="translate(201.000000, 109.000000)">
                 <mask id="mask-3" fill="white">
                     <use xlink:href="#path-2"></use>
                 </mask>

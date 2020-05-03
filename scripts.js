@@ -1,7 +1,9 @@
-const items = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f' ,'f', 'g', 'g', 'h', 'h'];
-const tilesMatchRatio = 2;
-const selectedItems = [];
-let previousItem = null;
+const tiles = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f' ,'f', 'g', 'g', 'h', 'h'];
+let tilesCount = tiles.length;
+console.log("tiles: " + tilesCount);
+const selectedTiles = [];
+let tilesDiscovered = 0;
+let previousTile = null;
 
 function createBoardArray(rows, cols) {
   let arr = [];
@@ -12,29 +14,32 @@ function createBoardArray(rows, cols) {
     arr[i].push( new Array(cols));
 
     for(let j=0; j < cols; j++){
-      let randomItemIndex = Math.floor(Math.random() * items.length);
-      arr[i][j] = items[randomItemIndex];
-      items.splice(randomItemIndex, 1);
+      let randomTileIndex = Math.floor(Math.random() * tiles.length);
+      arr[i][j] = tiles[randomTileIndex];
+      tiles.splice(randomTileIndex, 1);
+      console.log(randomTileIndex);
     }
   }
 
   return arr;
 }
 
-function selectedItemAdd(item) {
-  item.classList.add('marked');
-  selectedItems.push(item);
-  if (selectedItems.length === 1) hideItemsExcept(item);
-  console.log("adding " + item.dataset.value);
+function selectedTileAdd(tiles) {
+  tiles.classList.add('marked');
+  selectedTiles.push(tiles);
+  if (selectedTiles.length === 1) hideTilesExcept(tiles);
+  console.log("adding " + tiles.dataset.value);
 }
 
-function selectedItemsCompare() {
+function selectedTilesCompare() {
   let success = false;
-  console.log("comparing " + selectedItems[0].dataset.value + " + " + selectedItems[1].dataset.value);
-  if (selectedItems[0].dataset.value === selectedItems[1].dataset.value) success = true;
+  console.log("comparing " + selectedTiles[0].dataset.value + " + " + selectedTiles[1].dataset.value);
+  if (selectedTiles[0].dataset.value === selectedTiles[1].dataset.value) success = true;
 
   if (success) {
     console.log("success!")
+    tilesDiscovered += 2;
+    console.log(tilesDiscovered);
     return true;
   } else {
     console.log("different");
@@ -43,10 +48,10 @@ function selectedItemsCompare() {
 
 }
 
-function selectedItemsReset() {
+function selectedTilesReset() {
   console.log("zeroing");
-  selectedItems.pop();
-  selectedItems.pop();
+  selectedTiles.pop();
+  selectedTiles.pop();
 }
 
 function createBoardDOM(myBoard) {
@@ -76,14 +81,15 @@ function createBoardNode(nodeType, myClasses, value, id) {
   document.getElementById("board").appendChild(node);
 }
 
-function itemClicked() {
-  let item = event.target;
+function tilesClicked() {
+  let tiles = event.target;
 
-  if (selectedItems.length <2) selectedItemAdd(item);
-  if (selectedItems.length == 2) {
-    if (selectedItemsCompare()) markDiscovered();
-    selectedItemsReset();
+  if (selectedTiles.length <2) selectedTileAdd(tiles);
+  if (selectedTiles.length == 2) {
+    if (selectedTilesCompare()) markDiscovered();
+    selectedTilesReset();
   }
+  if (tilesDiscovered === tilesCount) alert('You have won!');
 }
 
 
@@ -91,23 +97,23 @@ function itemClicked() {
 function addListeners() {
   var myField = document.getElementsByClassName('field');
   for (var i = 0; i < myField.length; i++) {
-    myField[i].addEventListener('click', itemClicked);
+    myField[i].addEventListener('click', tilesClicked);
   }
 }
 
 
-function hideItemsExcept(item) {
+function hideTilesExcept(tiles) {
   var myField = document.getElementsByClassName('field');
   for (var i = 0; i < myField.length; i++) {
     myField[i].classList.remove('marked');
   }
-  item.classList.add('marked');
+  tiles.classList.add('marked');
 }
 
 
 function markDiscovered() {
-  selectedItems[0].classList.add('hidden');
-  selectedItems[1].classList.add('hidden');
+  selectedTiles[0].classList.add('hidden');
+  selectedTiles[1].classList.add('hidden');
 }
 
 function nothing() {
@@ -115,9 +121,9 @@ function nothing() {
 }
 
 
-getItemID = (item) => item.dataset.id;
+getTileID = (tiles) => tiles.dataset.id;
 
-getItemValue = (item) => item.dataset.value;
+getTileValue = (tiles) => tiles.dataset.value;
 
 
 

@@ -36,13 +36,13 @@ body {
 
   text-align: center;
   line-height: var(--fieldSize);
-  transition: 0.15s all;
+  transition: 0.1s all;
   background-color: #333;
 
   font-size: 32px;
   text-transform: capitalize;
   color: transparent;
-
+  z-index: 1;
 }
 
 .field.marked {
@@ -52,18 +52,22 @@ body {
 
 .field:hover {
   cursor: pointer;
-  background-color: #555;
+  background-color: #fb5;
+  transform: scale(0.98);
+  z-index: 10;
 }
 .field.marked:hover {
-  background-color: #f33;
+  background-color: #f55;
+  transform: scale(1);
 }
 
 
-.field.hidden, .field.hidden:hover {
+.field.hidden {
   background-color: transparent;
   color: transparent;
   display: hidden;
 }
+
 
 
 .field.toCompare {

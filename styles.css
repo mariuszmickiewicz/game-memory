@@ -11,6 +11,9 @@
   --tileBkgGuessed: #1a1a1a;
 }
 
+html * {
+  font-size: 16px;
+  }
 
 body {
   display: flex;
@@ -22,9 +25,9 @@ body {
 }
 
 #container {
-  margin: 0;
+  margin: 0 1rem;
   display: flex;
-  width: 100vw;
+  width: calc(100vw - 2rem);
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -66,9 +69,8 @@ body {
 
 #score {
   width: 100%;
-  height: 24px;
   color: #fff;
-  margin: 0 0 16px 0;
+  margin: 0 0 1rem 0;
   padding: 0 var(--tileMargin);
 }
 

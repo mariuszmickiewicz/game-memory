@@ -50,33 +50,19 @@ body {
   width: calc(25% - (2 * var(--tileMargin)));
   height: calc(25% - (2 * var(--tileMargin)));
 
-  text-align: center;
-  line-height: calc(50vw / 4 - (2 * var(--tileMargin)));
   background-color: #333;
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: center;
   background-image: none;
   border-radius: var(--tileRadius);
-
-  font-family: 'Monoton', cursive;
-  font-weight: 400;
-  font-size: 4vw;
-  text-transform: capitalize;
-  color: transparent;
-  z-index: 1;
-  transition: 0.5s all;
-
+  transition: 0.4s all;
 }
 
 .tile:hover { background-color: var(--tileBkgHover); cursor: pointer; }
 .tile.marked { background-color: var(--tileBkgMarked); }
 .tile.guessed { background-color: var(--tileBkgGuessed); }
-/* .tile.marked.guessed:hover { background-color: var(--tileBkgguessed); } */
 
-.tile.toCompare {
-  display: none;
-}
 
 #score {
   width: 100%;
@@ -89,17 +75,24 @@ body {
 
 .guessed.tile-cross-1,
 .marked.tile-cross-1 { background-image: url('images/cross-1.svg'); }
+
 .guessed.tile-cross-2,
 .marked.tile-cross-2 { background-image: url('images/cross-2.svg'); }
+
 .guessed.tile-square-1,
 .marked.tile-square-1 { background-image: url('images/square-1.svg'); }
+
 .guessed.tile-square-2,
 .marked.tile-square-2 { background-image: url('images/square-2.svg'); }
+
 .guessed.tile-circle-1,
 .marked.tile-circle-1 { background-image: url('images/circle-1.svg'); }
+
 .guessed.tile-circle-2,
 .marked.tile-circle-2 { background-image: url('images/circle-2.svg'); }
+
 .guessed.tile-ex-1,
 .marked.tile-ex-1 { background-image: url('images/ex-1.svg'); }
+
 .guessed.tile-ex-2,
 .marked.tile-ex-2 { background-image: url('images/ex-2.svg'); }

@@ -54,9 +54,6 @@ function createBoardNode(nodeType, myClasses, value, id) {
 }
 
 
-
-
-
 function selectedTileAdd(tile) {
   tile.classList.add('marked');
   selectedTiles.push(tile);
@@ -103,7 +100,6 @@ function tileClicked() {
   console.log(setClassValue('tries', playerClicks));
   if (tilesDiscovered === tilesCount) alert('Final score: ' + playerClicks);
 }
-
 
 
 function addListeners() {

@@ -1,4 +1,4 @@
-const tiles = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f' ,'f', 'g', 'g', 'h', 'h'];
+const tiles = ['cross-1', 'cross-1', 'cross-2', 'cross-2', 'ex-1', 'ex-1', 'ex-2', 'ex-2', 'circle-1', 'circle-1', 'circle-2' ,'circle-2', 'square-1', 'square-1', 'square-2', 'square-2'];
 const selectedTiles = [];
 let tilesCount = tiles.length;
 let tilesDiscovered = 0;
@@ -35,7 +35,7 @@ function createBoardDOM(myBoard) {
   for (y = 0; y < boardSize ; y++) {
     for (x = 0; x < boardSize ; x++) {
       let myClasses = ['tile', 'tile-' + myBoard[x][y]];
-      createBoardNode('a', myClasses, myBoard[x][y], i);
+      createBoardNode('div', myClasses, myBoard[x][y], i);
       i++;
     }
   }
@@ -47,9 +47,9 @@ function createBoardNode(nodeType, myClasses, value, id) {
   let node = document.createElement(nodeType);
 
   for (i = 0; i < myClasses.length; i++) node.classList.add(myClasses[i]);
-  node.dataset.id = id;
+  // node.dataset.id = id;
   node.dataset.value = value;
-  node.text = value;
+  // node.innerHTML = value;
   document.getElementById("board").appendChild(node);
 }
 
@@ -123,7 +123,7 @@ function hideTilesExcept(tiles) {
 }
 
 
-markDiscovered = () => { for(let i=0; i < 2; i++) selectedTiles[i].classList.add('uncovered'); }
+markDiscovered = () => { for(let i=0; i < 2; i++) selectedTiles[i].classList.add('guessed'); }
 
 getTileID = (tiles) => tiles.dataset.id;
 

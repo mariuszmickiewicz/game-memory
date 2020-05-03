@@ -4,7 +4,13 @@
   --tileSize: 76px;
   --tileMargin: 1px;
   --boardWidth: 320px;
+  --tileRadius: 4px;
+  --tileBkgDefault: #333;
+  --tileBkgHover: #444;
+  --tileBkgMarked: #222;
+  --tileBkgGuessed: #1a1a1a;
 }
+
 
 body {
   display: flex;
@@ -47,6 +53,11 @@ body {
   text-align: center;
   line-height: calc(50vw / 4 - (2 * var(--tileMargin)));
   background-color: #333;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  background-image: none;
+  border-radius: var(--tileRadius);
 
   font-family: 'Monoton', cursive;
   font-weight: 400;
@@ -58,33 +69,10 @@ body {
 
 }
 
-.tile:hover {
-  cursor: pointer;
-  background-color: #444;
-  transform: scale(0.98);
-  z-index: 10;
-}
-
-.tile.uncovered:hover {
-  transform: scale(1);
-}
-
-.tile.marked {
-  background-color: #f55;
-  color: #ddd;
-}
-
-.tile.marked:hover {
-  background-color: #f55;
-  transform: scale(1);
-}
-
-.tile.marked.uncovered:hover,
-.tile.uncovered {
-  color: #fff;
-  background-color: #fb5;
-  transform: scale(1);
-}
+.tile:hover { background-color: var(--tileBkgHover); cursor: pointer; }
+.tile.marked { background-color: var(--tileBkgMarked); }
+.tile.guessed { background-color: var(--tileBkgGuessed); }
+/* .tile.marked.guessed:hover { background-color: var(--tileBkgguessed); } */
 
 .tile.toCompare {
   display: none;
@@ -98,13 +86,20 @@ body {
   padding: 0 var(--tileMargin);
 }
 
-.show.tile-a { background-color: #ba324f; }
-.show.tile-b { background-color: #36CFD5; }
-.show.tile-c { background-color: #648767; }
-.show.tile-d { background-color: #3C91E6; }
-.show.tile-e { background-color: #cee7e6; }
-.show.tile-f { background-color: #ffc15e; }
-.show.tile-g { background-color: #454372; }
-.show.tile-h { background-color: #f7934c; }
-.show.tile-i { background-color: #F49FBC; }
-.show.tile-j { background-color: #169873; }
+
+.guessed.tile-cross-1,
+.marked.tile-cross-1 { background-image: url('images/cross-1.svg'); }
+.guessed.tile-cross-2,
+.marked.tile-cross-2 { background-image: url('images/cross-2.svg'); }
+.guessed.tile-square-1,
+.marked.tile-square-1 { background-image: url('images/square-1.svg'); }
+.guessed.tile-square-2,
+.marked.tile-square-2 { background-image: url('images/square-2.svg'); }
+.guessed.tile-circle-1,
+.marked.tile-circle-1 { background-image: url('images/circle-1.svg'); }
+.guessed.tile-circle-2,
+.marked.tile-circle-2 { background-image: url('images/circle-2.svg'); }
+.guessed.tile-ex-1,
+.marked.tile-ex-1 { background-image: url('images/ex-1.svg'); }
+.guessed.tile-ex-2,
+.marked.tile-ex-2 { background-image: url('images/ex-2.svg'); }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>item</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFBB55" offset="0%"></stop>
+            <stop stop-color="#EF9B1D" offset="100%"></stop>
+        </linearGradient>
+        <path d="M28,0 C43.463973,0 56,12.536027 56,28 C56,43.463973 43.463973,56 28,56 C12.536027,56 0,43.463973 0,28 C0,12.536027 12.536027,0 28,0 Z M28,13 C19.7157288,13 13,19.7157288 13,28 C13,36.2842712 19.7157288,43 28,43 C36.2842712,43 43,36.2842712 43,28 C43,19.7157288 36.2842712,13 28,13 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-17.000000, -17.000000)">
+            <g id="item" transform="translate(17.000000, 17.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Combined-Shape" fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <g id="lines" opacity="0.300000012" style="mix-blend-mode: overlay;" mask="url(#mask-3)" fill="#111111" fill-rule="evenodd">
+                    <circle id="Oval" cx="14" cy="21" r="8"></circle>
+                    <circle id="Oval" cx="21" cy="2" r="4"></circle>
+                    <circle id="Oval" cx="20" cy="45" r="4"></circle>
+                    <circle id="Oval" cx="46" cy="18" r="4"></circle>
+                    <circle id="Oval" cx="40" cy="30" r="2"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

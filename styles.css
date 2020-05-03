@@ -1,0 +1,82 @@
+:root {
+  --circleMargin: 0px;
+  --circleSize: 40px;
+  --fieldSize: 76px;
+  --fieldMargin: 2px;
+  --boardWidth: 320px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#board {
+  display: block;
+  width: var(--boardWidth);
+}
+
+.field {
+  box-sizing: border-box;
+  float: left;
+  margin: var(--fieldMargin);
+  display: block;
+  width: var(--fieldSize);
+  height: var(--fieldSize);
+
+  text-align: center;
+  line-height: var(--fieldSize);
+  transition: 0.15s all;
+  background-color: #333;
+
+  font-size: 32px;
+  text-transform: capitalize;
+  color: transparent;
+
+}
+
+.field.marked {
+  background-color: #f55;
+  color: #ddd;
+}
+
+.field:hover {
+  cursor: pointer;
+  background-color: #555;
+}
+.field.marked:hover {
+  background-color: #f33;
+}
+
+
+.field.hidden, .field.hidden:hover {
+  background-color: transparent;
+  color: transparent;
+  display: hidden;
+}
+
+
+.field.toCompare {
+  display: none;
+}
+
+.show.field-a { background-color: #ba324f; }
+.show.field-b { background-color: #36CFD5; }
+.show.field-c { background-color: #648767; }
+.show.field-d { background-color: #3C91E6; }
+.show.field-e { background-color: #cee7e6; }
+.show.field-f { background-color: #ffc15e; }
+.show.field-g { background-color: #454372; }
+.show.field-h { background-color: #f7934c; }
+.show.field-i { background-color: #F49FBC; }
+.show.field-j { background-color: #169873; }

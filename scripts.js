@@ -1,9 +1,9 @@
 const tiles = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f' ,'f', 'g', 'g', 'h', 'h'];
 let tilesCount = tiles.length;
-console.log("tiles: " + tilesCount);
 const selectedTiles = [];
 let tilesDiscovered = 0;
 let previousTile = null;
+let playerClicks = 0;
 
 function createBoardArray(rows, cols) {
   let arr = [];
@@ -20,9 +20,9 @@ function createBoardArray(rows, cols) {
       console.log(randomTileIndex);
     }
   }
-
   return arr;
 }
+
 
 function selectedTileAdd(tiles) {
   tiles.classList.add('marked');
@@ -81,7 +81,7 @@ function createBoardNode(nodeType, myClasses, value, id) {
   document.getElementById("board").appendChild(node);
 }
 
-function tilesClicked() {
+function tileClicked() {
   let tiles = event.target;
 
   if (selectedTiles.length <2) selectedTileAdd(tiles);
@@ -89,22 +89,24 @@ function tilesClicked() {
     if (selectedTilesCompare()) markDiscovered();
     selectedTilesReset();
   }
-  if (tilesDiscovered === tilesCount) alert('You have won!');
+  playerClicks++;
+  console.log(setClassValue('tries', playerClicks));
+  if (tilesDiscovered === tilesCount) alert('');
 }
 
 
 
 function addListeners() {
-  var myField = document.getElementsByClassName('field');
-  for (var i = 0; i < myField.length; i++) {
-    myField[i].addEventListener('click', tilesClicked);
+  let myField = document.getElementsByClassName('field');
+  for (let i = 0; i < myField.length; i++) {
+    myField[i].addEventListener('click', tileClicked);
   }
 }
 
 
 function hideTilesExcept(tiles) {
-  var myField = document.getElementsByClassName('field');
-  for (var i = 0; i < myField.length; i++) {
+  let myField = document.getElementsByClassName('field');
+  for (let i = 0; i < myField.length; i++) {
     myField[i].classList.remove('marked');
   }
   tiles.classList.add('marked');
@@ -116,14 +118,16 @@ function markDiscovered() {
   selectedTiles[1].classList.add('uncovered');
 }
 
-function nothing() {
-
-}
 
 
 getTileID = (tiles) => tiles.dataset.id;
 
 getTileValue = (tiles) => tiles.dataset.value;
+
+getClassValue = (myClass) => document.getElementsByClassName(myClass)[0].innerText;
+
+setClassValue = (myClass, value) => document.getElementsByClassName(myClass)[0].innerText = value;
+
 
 
 

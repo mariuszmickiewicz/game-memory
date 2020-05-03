@@ -3,7 +3,6 @@ const selectedTiles = [];
 let tilesCount = tiles.length;
 let boardSize = Math.sqrt(tilesCount);
 let tilesGuessed = 0;
-let tilePrevious = null;
 let playerClicks = 0;
 
 
@@ -47,7 +46,7 @@ function createBoardNode(nodeType, myClasses, value, id) {
   let node = document.createElement(nodeType);
 
   for (i = 0; i < myClasses.length; i++) node.classList.add(myClasses[i]);
-  // node.dataset.id = id;
+  node.dataset.id = id;
   node.dataset.value = value;
   // node.innerHTML = value;
   document.getElementById("board").appendChild(node);
@@ -118,7 +117,7 @@ function hideTilesExcept(tiles) {
 }
 
 
-markGuessed= () => { for(let i=0; i < 2; i++) selectedTiles[i].classList.add('guessed'); }
+markGuessed= () => { for(let i = 0; i < 2; i++) selectedTiles[i].classList.add('guessed'); }
 
 getTileID = (tiles) => tiles.dataset.id;
 

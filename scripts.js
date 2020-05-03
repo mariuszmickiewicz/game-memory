@@ -1,39 +1,39 @@
 const tiles = ['cross-1', 'cross-1', 'cross-2', 'cross-2', 'ex-1', 'ex-1', 'ex-2', 'ex-2', 'circle-1', 'circle-1', 'circle-2' ,'circle-2', 'square-1', 'square-1', 'square-2', 'square-2'];
 const selectedTiles = [];
 let tilesCount = tiles.length;
-let tilesDiscovered = 0;
+let boardSize = Math.sqrt(tilesCount);
+let tilesGuessed = 0;
 let tilePrevious = null;
 let playerClicks = 0;
 
 
 // create an array and fill it with randomized $tile values
-function createBoardArray(rows, cols) {
+function createBoardArray(size) {
   let arr = [];
 
-  for(let i = 0; i < rows; i++){
+  for(let i = 0; i < size; i++){
 
     arr.push([]);
-    arr[i].push( new Array(cols));
+    arr[i].push( new Array(size));
 
-    for(let j = 0; j < cols; j++){
+    for(let j = 0; j < size; j++){
       let randomTileIndex = Math.floor(Math.random() * tiles.length);
       arr[i][j] = tiles[randomTileIndex];
       tiles.splice(randomTileIndex, 1);
       console.log(randomTileIndex);
     }
+
   }
   return arr;
 }
 
 // create DOM for the board
 function createBoardDOM(myBoard) {
-  let x = 0;
-  let y = 0;
   let i = 0;
   let boardSize = myBoard.length;
 
-  for (y = 0; y < boardSize ; y++) {
-    for (x = 0; x < boardSize ; x++) {
+  for (let y = 0; y < boardSize ; y++) {
+    for (let x = 0; x < boardSize ; x++) {
       let myClasses = ['tile', 'tile-' + myBoard[x][y]];
       createBoardNode('div', myClasses, myBoard[x][y], i);
       i++;
@@ -70,14 +70,13 @@ function selectedTilesCompare() {
 
   if (success) {
     console.log("success!")
-    tilesDiscovered += 2;
-    console.log(tilesDiscovered);
+    tilesGuessed += 2;
+    console.log(tilesGuessed);
     return true;
   } else {
     console.log("different");
     return false;
   }
-
 }
 
 // remove values from array of selected tiles
@@ -93,12 +92,12 @@ function tileClicked() {
 
   if (selectedTiles.length <2) selectedTileAdd(tile);
   if (selectedTiles.length == 2) {
-    if (selectedTilesCompare()) markDiscovered();
+    if (selectedTilesCompare()) markGuessed();
     selectedTilesReset();
   }
   playerClicks++;
   console.log(setClassValue('tries', playerClicks));
-  if (tilesDiscovered === tilesCount) alert('Final score: ' + playerClicks);
+  if (tilesGuessed === tilesCount) alert('Final score: ' + playerClicks);
 }
 
 
@@ -119,7 +118,7 @@ function hideTilesExcept(tiles) {
 }
 
 
-markDiscovered = () => { for(let i=0; i < 2; i++) selectedTiles[i].classList.add('guessed'); }
+markGuessed= () => { for(let i=0; i < 2; i++) selectedTiles[i].classList.add('guessed'); }
 
 getTileID = (tiles) => tiles.dataset.id;
 
@@ -130,5 +129,5 @@ getClassValue = (myClass) => document.getElementsByClassName(myClass)[0].innerHT
 setClassValue = (myClass, value) => document.getElementsByClassName(myClass)[0].innerHTML = value;
 
 
-createBoardDOM(createBoardArray(4,4));
+createBoardDOM(createBoardArray(boardSize));
 addListeners();

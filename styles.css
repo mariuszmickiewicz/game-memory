@@ -63,6 +63,7 @@ body {
 }
 
 .tile:hover { background-color: var(--tileBkgHover); cursor: pointer; }
+.tile:focus { background-color: var(--tileBkgHover); }
 .tile.marked { background-color: var(--tileBkgMarked); }
 .tile.guessed { background-color: var(--tileBkgGuessed); background-size: 35%; }
 

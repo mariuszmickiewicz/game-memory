@@ -48,6 +48,8 @@ function createBoardNode(nodeType, myClasses, value, id) {
   for (i = 0; i < myClasses.length; i++) node.classList.add(myClasses[i]);
   node.dataset.id = id;
   node.dataset.value = value;
+  node.tabIndex = id;
+  node.setAttribute('aria-label', 'Tile');
   // node.innerHTML = value;
   document.getElementById("board").appendChild(node);
 }

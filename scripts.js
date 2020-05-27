@@ -4,6 +4,7 @@ let tilesCount = tiles.length;
 let boardSize = Math.sqrt(tilesCount);
 let tilesGuessed = 0;
 let playerClicks = 0;
+const allTiles = document.getElementsByClassName('tile');
 
 
 // create an array and fill it with randomized $tile values
@@ -80,7 +81,6 @@ function selectedTilesCompare() {
 
 // remove values from array of selected tiles
 function selectedTilesReset() {
-  console.log("zeroing");
   selectedTiles.pop();
   selectedTiles.pop();
 }
@@ -88,7 +88,6 @@ function selectedTilesReset() {
 
 function tileClicked() {
   let tile = event.target;
-
   if (selectedTiles.length <2) selectedTileAdd(tile);
   if (selectedTiles.length == 2) {
     if (selectedTilesCompare()) markGuessed();
@@ -100,18 +99,15 @@ function tileClicked() {
 }
 
 
-function addListeners() {
-  let myField = document.getElementsByClassName('tile');
-  for (let i = 0; i < myField.length; i++) {
-    myField[i].addEventListener('click', tileClicked);
-  }
+function addListener() {
+  let listenerObject = document.getElementsByClassName('board');
+  listenerObject[0].addEventListener('click', tileClicked);
 }
 
 
 function hideTilesExcept(tiles) {
-  let myField = document.getElementsByClassName('tile');
-  for (let i = 0; i < myField.length; i++) {
-    myField[i].classList.remove('marked');
+  for (let i = 0; i < allTiles.length; i++) {
+    allTiles[i].classList.remove('marked');
   }
   tiles.classList.add('marked');
 }
@@ -129,4 +125,4 @@ setClassValue = (myClass, value) => document.getElementsByClassName(myClass)[0].
 
 
 createBoardDOM(createBoardArray(boardSize));
-addListeners();
+addListener();

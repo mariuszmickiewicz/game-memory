@@ -20,7 +20,6 @@ function createBoardArray(size) {
       let randomTileIndex = Math.floor(Math.random() * tiles.length);
       arr[i][j] = tiles[randomTileIndex];
       tiles.splice(randomTileIndex, 1);
-      console.log(randomTileIndex);
     }
 
   }
@@ -94,7 +93,7 @@ function tileClicked() {
     selectedTilesReset();
   }
   playerClicks++;
-  console.log(setClassValue('tries', playerClicks));
+  setClassValue('tries', playerClicks);
   if (tilesGuessed === tilesCount) alert('Final score: ' + playerClicks);
 }
 
@@ -123,6 +122,6 @@ getClassValue = (myClass) => document.getElementsByClassName(myClass)[0].innerHT
 
 setClassValue = (myClass, value) => document.getElementsByClassName(myClass)[0].innerHTML = value;
 
-
+console.log("ver 0.1");
 createBoardDOM(createBoardArray(boardSize));
 addListener();
